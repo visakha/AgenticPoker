@@ -1,0 +1,12 @@
+streamlit>=1.32.0
+behave>=1.2.6
+pyyaml>=6.0
+typing-extensions>=4.10.0
+treys>=0.1.8
+
+# Development Tools
+black>=24.0.0
+mypy>=1.8.0
+sphinx>=7.2.0
+sphinx-rtd-theme>=2.0.0
+pytest>=8.0.0

@@ -1,0 +1,33 @@
+# AI Player Personalities Configuration
+
+- name: "The Rock"
+  type: "tight_passive"
+  vpip: 0.10
+  pfr: 0.05
+  aggression_factor: 0.5
+  bluff_frequency: 0.05
+  description: "Plays only premium hands. Rarely raises unless holding the nuts."
+
+- name: "Maniac"
+  type: "loose_aggressive"
+  vpip: 0.60
+  pfr: 0.40
+  aggression_factor: 3.0
+  bluff_frequency: 0.40
+  description: "Plays almost any two cards. Raises constantly to pressure opponents."
+
+- name: "The Professor"
+  type: "analytical"
+  vpip: 0.25
+  pfr: 0.20
+  aggression_factor: 1.5
+  bluff_frequency: 0.15
+  description: "Calculates pot odds and implied odds. Balanced play style."
+
+- name: "Calling Station"
+  type: "loose_passive"
+  vpip: 0.45
+  pfr: 0.05
+  aggression_factor: 0.2
+  bluff_frequency: 0.0
+  description: "Calls bets with marginal hands. Hard to bluff, but rarely raises."

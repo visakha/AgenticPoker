@@ -1,0 +1,39 @@
+# Agentic Poker Task List
+
+- [ ] Planning and Setup
+    - [ ] Explore existing codebase (if any) <!-- id: 0 -->
+    - [ ] Create implementation plan <!-- id: 1 -->
+    - [ ] Define data structures (Card, Deck, Player, GameState) <!-- id: 2 -->
+- [x] Core Poker Logic (Functional)
+    - [x] Define Immutable Domain Models (Card, Deck, State) <!-- id: 3 -->
+    - [x] Implement Pure Game Functions (logic.py) <!-- id: 5 -->
+    - [x] Implement MCP Protocol Definitions <!-- id: 26 -->
+- [x] AI Agents
+    - [x] Define AI Player interface <!-- id: 6 -->
+    - [x] Create `tune_ai_players.yml` structure <!-- id: 7 -->
+    - [x] Implement specific AI personalities (Tight, Aggressive, Analytical, etc.) <!-- id: 8 -->
+    - [x] Implement logic to load personalities from YAML <!-- id: 9 -->
+- [ ] CLI Runner & Logging
+    - [x] Create CLI entry point <!-- id: 10 -->
+    - [x] Implement game simulation loop <!-- id: 11 -->
+    - [x] Implement detailed logging for training data <!-- id: 12 -->
+    - [x] Implement `stats_analyzer.py` for post-game analysis <!-- id: 22 -->
+- [ ] LLM Integration
+    - [x] Implement `DialogueManager` for agent chat <!-- id: 23 -->
+    - [x] Integrate LLM calls into Player Agents <!-- id: 24 -->
+- [x] Streamlit UI (TypeScript + React)
+    - [x] Setup Streamlit Custom Component (React/Vite template) <!-- id: 13 -->
+    - [x] Implement Game Board (Table, Players, Cards) in React <!-- id: 14 -->
+    - [x] Implement "Rich Info" panel (Bottom 25%) <!-- id: 15 -->
+    - [x] Implement Control Bar (Pause/Resume, Toggle Cards) <!-- id: 16 -->
+    - [x] Implement Keyboard Navigation (Arrow keys to focus players) <!-- id: 17 -->
+- [ ] Verification & BDD
+    - [x] Create BDD Agent Runner <!-- id: 27 -->
+    - [x] Write BDD Feature Files (Gherkin) <!-- id: 28 -->
+    - [x] Verify AI behaviors via BDD <!-- id: 18 -->
+    - [x] Verify Game Logic correctness via BDD <!-- id: 19 -->
+    - [x] Verify UI responsiveness and interactions <!-- id: 20 -->
+- [x] Documentation
+    - [x] Create User Documentation (How to play, Keyboard shortcuts) <!-- id: 21 -->
+    - [x] Create Dev Documentation for BDD Agent <!-- id: 29 -->
+    - [x] Create Dockerfile for containerization <!-- id: 25 -->
