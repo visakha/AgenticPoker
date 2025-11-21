@@ -1,0 +1,65 @@
+# Training Configuration for LLM Poker Agents
+
+# Model Architecture
+model:
+  d_model: 256
+  n_heads: 8
+  n_layers: 6
+  d_ff: 1024
+  dropout: 0.1
+  max_seq_len: 128
+  num_actions: 5
+
+# Training Hyperparameters
+training:
+  num_games: 1000000
+  batch_size: 256
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_epsilon: 0.2
+  value_loss_coef: 0.5
+  entropy_coef: 0.01
+  max_grad_norm: 0.5
+  
+  # PPO specific
+  ppo_epochs: 4
+  num_minibatches: 4
+  
+  # Simulation
+  parallel_games: 8
+  games_per_update: 128
+  
+  # Evaluation
+  eval_frequency: 1000
+  eval_games: 100
+  
+  # Checkpointing
+  checkpoint_frequency: 5000
+  keep_checkpoints: 5
+  
+  # Logging
+  log_frequency: 10
+  
+  # Device
+  device: cuda
+  seed: 42
+
+# Simulation Settings
+simulation:
+  num_players: 6
+  starting_chips: 1000
+  small_blind: 5
+  big_blind: 10
+  use_multiprocessing: true
+  num_workers: null  # Auto-detect
+  collect_all_states: true
+  augment_data: true
+
+# Paths
+paths:
+  base_dir: training
+  checkpoint_dir: training/checkpoints
+  log_dir: training/logs
+  data_dir: training/data
+  config_file: config/training_config.yaml
