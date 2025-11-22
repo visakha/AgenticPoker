@@ -1,0 +1,31 @@
+cd c:\Users\vamsi\wrk-py\AgenticPoker
+
+
+# switch to local virtual environment
+venv\Scripts\activate.bat
+
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the poker app
+uvicorn ui.fastapi_app:app --reload --port 8000
+
+# Open browser
+http://localhost:8000
+
+-- the below is my own notes
+
+
+******* DO NOT READ THIS SECTION *******
+
+You have two agent types available:
+
+FunctionalAgent
+ (currently in use) - Uses Monte Carlo simulations + probability calculations + GTO
+LLMAgent
+ - Uses a trained transformer neural network for agentic reasoning
+
+
+taskkill /F /IM python.exe /T
+

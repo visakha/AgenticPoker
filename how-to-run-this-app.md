@@ -11,13 +11,12 @@ Open it up (Search for "PowerShell" in your Start menu) and navigate to this fol
 
 ## 🛠️ Step 0: The "Do I Have This Stuff?" Check
 
-You need two things installed. If you don't have them, go get them. I'll wait.
-1.  **Python** (3.13 or newer) -> `python --version`
-2.  **Node.js** (for the fancy UI) -> `node --version`
+You need Python installed. If you don't have it, go get it. I'll wait.
+-   **Python** (3.13 or newer) -> `python --version`
 
 ## 🏃‍♂️ Step 1: Install the Python Brains 🧠
 
-First, let's install the libraries that make the poker logic work.
+Install the libraries that make the poker logic work:
 
 ```powershell
 pip install -r requirements.txt
@@ -25,35 +24,24 @@ pip install -r requirements.txt
 
 *If you see a bunch of text scrolling by, that's good. It means it's learning.*
 
-## 🎨 Step 2: Build the Pretty Face (The UI) 💅
+## 🎮 Step 2: IT'S GAME TIME! 🃏
 
-Now we need to compile the React frontend. This is the part that makes it look like a sci-fi movie instead of a spreadsheet.
-
-```powershell
-# Go into the UI folder
-cd ui/poker_component
-
-# Install the JavaScript dependencies (this might take a minute)
-npm install
-
-# Build the production version
-npm run build
-
-# Go back to the root folder
-cd ../..
-```
-
-*Note: You only need to do this step ONCE (or whenever you change the React code).*
-
-## 🎮 Step 3: IT'S GAME TIME! 🃏
-
-Launch the application:
+Launch the FastAPI application:
 
 ```powershell
-streamlit run ui/app.py
+uvicorn ui.fastapi_app:app --reload --port 8000
 ```
 
-A browser window should pop up automatically. If it doesn't, click the "Local URL" link it shows you.
+Then open your browser to:
+```
+http://localhost:8000
+```
+
+**Features**:
+- ⚡ **Instant response** - No more waiting for page reloads!
+- 🔄 **Auto-play mode** - Watch 20 steps per second
+- 🎨 **Modern dark theme** - Easy on the eyes
+- 📡 **Real-time updates** - WebSocket magic
 
 ## 🤖 Bonus: Running a Simulation
 
@@ -65,8 +53,8 @@ python cli.py --games 10
 
 ## 🆘 Troubleshooting
 
--   **"npm is not recognized"**: You didn't install Node.js, did you?
--   **"streamlit is not recognized"**: Try `python -m streamlit run ui/app.py`.
--   **The UI is blank**: Did you run `npm run build`? Be honest.
+-   **"uvicorn is not recognized"**: Try `python -m uvicorn ui.fastapi_app:app --reload --port 8000`
+-   **Port 8000 already in use**: Change to a different port like `--port 8001`
+-   **WebSocket not connecting**: Check browser console (F12) for errors
 
 Enjoy losing your fake money! 💸

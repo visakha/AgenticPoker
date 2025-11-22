@@ -1,0 +1,337 @@
+/* Agentic Poker - Modern Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: #0f3460;
+    padding: 24px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar h1 {
+    font-size: 28px;
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.stats {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.stat-value {
+    color: #FFD700;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.btn-secondary {
+    background: #2196F3;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #0b7dda;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.info {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.caption {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Main Game Area */
+.game-area {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.game-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.info-label {
+    display: block;
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.info-value {
+    display: block;
+    color: #FFD700;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Community Cards */
+.community-cards {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.community-cards h3 {
+    color: #FFD700;
+    margin-bottom: 16px;
+}
+
+.cards-display {
+    font-size: 48px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.card {
+    display: inline-block;
+    padding: 8px 12px;
+    background: white;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 32px;
+}
+
+.no-cards {
+    color: #666;
+    font-size: 18px;
+}
+
+/* Poker Table */
+.poker-table {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.player-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+.player-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s;
+}
+
+.player-card.current {
+    border-color: #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.player-card.folded {
+    opacity: 0.4;
+    filter: grayscale(50%);
+    border-color: #666;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.player-status {
+    font-size: 20px;
+}
+
+.player-name {
+    flex: 1;
+}
+
+.current-marker {
+    font-size: 20px;
+}
+
+.dealer-button {
+    background: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-left: auto;
+}
+
+.player-cards {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 28px;
+}
+
+.card-back {
+    font-size: 28px;
+}
+
+.player-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.stat {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.stat.bet {
+    color: #FFA500;
+}
+
+.player-actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 12px;
+}
+
+.actions-header {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.action-item {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.action-item code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #ddd;
+}
+
+.no-actions {
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .player-row {
+        grid-template-columns: 1fr;
+    }
+}
