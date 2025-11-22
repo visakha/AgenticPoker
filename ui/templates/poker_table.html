@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🃏 Agentic Poker</title>
+    <link rel="stylesheet" href="/static/styles.css?v=3">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h1>🃏 Agentic Poker</h1>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Hands Played:</span>
+                    <span id="hand-count" class="stat-value">{{ game.hand_count }}</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" onclick="newHand()">
+                    🔄 New Hand
+                </button>
+
+                <button class="btn btn-secondary" onclick="stepGame()">
+                    ⏭️ Step
+                </button>
+
+                <label class="toggle-label">
+                    <input type="checkbox" id="auto-play-toggle" onchange="toggleAutoPlay(this.checked)">
+                    <span>▶️ Auto Play</span>
+                </label>
+            </div>
+
+            <div class="info">
+                <p class="caption">AI agents playing Texas Hold'em poker</p>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div id="game-container" class="game-area">
+            <!-- Game Info Header -->
+            <div class="game-info">
+                <div class="info-card">
+                    <span class="info-label">💰 Pot</span>
+                    <span id="pot" class="info-value">${{ game.pot }}</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">💵 Current Bet</span>
+                    <span id="current-bet" class="info-value">${{ game.current_bet }}</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">🎲 Phase</span>
+                    <span id="phase" class="info-value">{{ game.phase }}</span>
+                </div>
+            </div>
+
+            <!-- Community Cards -->
+            <div class="community-cards">
+                <h3>🎴 Community Cards</h3>
+                <div class="cards-display">
+                    {% if game.community_cards %}
+                    {% for card in game.community_cards %}
+                    <span class="card">{{ card }}</span>
+                    {% endfor %}
+                    {% else %}
+                    <span class="no-cards">⏳ {{ game.phase }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Poker Table -->
+            <div class="poker-table">
+                <!-- Top Row: 3 players -->
+                <div class="player-row top-row">
+                    {% for player in game.players[:3] %}
+                    <div
+                        class="player-card {% if player.status == 'FOLDED' %}folded{% endif %} {% if player.is_current %}current{% endif %}">
+                        <div class="player-header">
+                            <span class="player-status">
+                                {% if player.is_current %}👉{% elif player.status == 'ACTIVE' %}🟢{% else %}🔴{% endif
+                                %}
+                            </span>
+                            <span class="player-name">{{ player.name }}</span>
+                            {% if player.is_current %}<span class="current-marker">👈</span>{% endif %}
+                            {% if player.is_dealer %}<span class="dealer-button">D</span>{% endif %}
+                        </div>
+
+                        <div class="player-cards">
+                            {% if player.cards %}
+                            {% for card in player.cards %}
+                            <span class="card">{{ card }}</span>
+                            {% endfor %}
+                            {% else %}
+                            <span class="card-back">🂠</span>
+                            <span class="card-back">🂠</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="player-stats">
+                            <div class="stat">💰 ${{ player.chips }}</div>
+                            {% if player.current_bet > 0 %}
+                            <div class="stat bet">🎲 Bet: ${{ player.current_bet }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="player-actions">
+                            <div class="actions-header">Recent Actions:</div>
+                            {% if player.recent_actions %}
+                            {% for action in player.recent_actions %}
+                            <div class="action-item">
+                                <code>{{'{'}}{{ action.phase }}{{'}'}} → {{ action.message }}</code>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-actions">No actions yet</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Bottom Row: 3 players -->
+                <div class="player-row bottom-row">
+                    {% for player in game.players[3:6] %}
+                    <div
+                        class="player-card {% if player.status == 'FOLDED' %}folded{% endif %} {% if player.is_current %}current{% endif %}">
+                        <div class="player-header">
+                            <span class="player-status">
+                                {% if player.is_current %}👉{% elif player.status == 'ACTIVE' %}🟢{% else %}🔴{% endif
+                                %}
+                            </span>
+                            <span class="player-name">{{ player.name }}</span>
+                            {% if player.is_current %}<span class="current-marker">👈</span>{% endif %}
+                            {% if player.is_dealer %}<span class="dealer-button">D</span>{% endif %}
+                        </div>
+
+                        <div class="player-cards">
+                            {% if player.cards %}
+                            {% for card in player.cards %}
+                            <span class="card">{{ card }}</span>
+                            {% endfor %}
+                            {% else %}
+                            <span class="card-back">🂠</span>
+                            <span class="card-back">🂠</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="player-stats">
+                            <div class="stat">💰 ${{ player.chips }}</div>
+                            {% if player.current_bet > 0 %}
+                            <div class="stat bet">🎲 Bet: ${{ player.current_bet }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="player-actions">
+                            <div class="actions-header">Recent Actions:</div>
+                            {% if player.recent_actions %}
+                            {% for action in player.recent_actions %}
+                            <div class="action-item">
+                                <code>{{'{'}}{{ action.phase }}{{'}'}} → {{ action.message }}</code>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="no-actions">No actions yet</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

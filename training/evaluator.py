@@ -7,6 +7,12 @@ Evaluates trained models by:
 - ELO rating system
 """
 
+# Allow running as both module and script
+import sys
+from pathlib import Path
+if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from typing import List, Dict, Tuple
 from dataclasses import dataclass
 import torch

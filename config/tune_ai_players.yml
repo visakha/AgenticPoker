@@ -31,3 +31,20 @@
   aggression_factor: 0.2
   bluff_frequency: 0.0
   description: "Calls bets with marginal hands. Hard to bluff, but rarely raises."
+
+- name: "The Shark"
+  type: "tight_aggressive"
+  vpip: 0.22
+  pfr: 0.18
+  aggression_factor: 2.5
+  bluff_frequency: 0.25
+  description: "Selective but aggressive. Exploits weaknesses and applies pressure."
+
+- name: "Lucky Larry"
+  type: "gambler"
+  vpip: 0.55
+  pfr: 0.25
+  aggression_factor: 1.2
+  bluff_frequency: 0.30
+  description: "Plays for fun and relies on luck. Unpredictable and entertaining."
+

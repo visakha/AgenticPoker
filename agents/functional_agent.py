@@ -109,7 +109,7 @@ class FunctionalAgent:
             me.hole_cards,
             self.current_game_state.community_cards,
             num_opponents=max(1, num_opponents),
-            num_simulations=500,  # Reduced for speed
+            num_simulations=50,  # Reduced for speed
         )
 
         # Calculate pot odds if there's a bet to call
@@ -132,7 +132,7 @@ class FunctionalAgent:
 
         # Adjust frequencies based on personality
         adjusted_raise_freq = gto_freqs["raise"] * (0.5 + aggression * 0.5)
-        adjusted_fold_freq = gto_freqs["fold"] * (2.0 - vpip)
+        adjusted_fold_freq = gto_freqs["fold"] * (1.2 - vpip * 0.5)  # Less folding
 
         # Normalize
         total = adjusted_raise_freq + gto_freqs["call"] + adjusted_fold_freq
@@ -159,7 +159,7 @@ class FunctionalAgent:
             if bet_to_call > 0:
                 # Check if call is +EV
                 ev = calculate_expected_value(win_prob, pot_size, bet_to_call)
-                if ev > 0 or win_prob > 0.3:  # Call if +EV or decent equity
+                if ev > 0 or win_prob > 0.25:  # Call if +EV or decent equity (lowered threshold)
                     return ActionType.CALL, ChipCount(0)
                 else:
                     return ActionType.FOLD, ChipCount(0)

@@ -92,9 +92,10 @@ class SimulationConfig:
     starting_chips: int = 1000
     small_blind: int = 5
     big_blind: int = 10
+    max_hands: int = 100
     
     # Performance
-    use_multiprocessing: bool = True
+    use_multiprocessing: bool = False  # Disabled by default due to model pickling
     num_workers: Optional[int] = None  # None = auto-detect
     
     # Data collection

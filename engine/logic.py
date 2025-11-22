@@ -158,7 +158,12 @@ def _is_betting_round_over(state: GameState) -> bool:
     active_players = [p for p in state.players if p.status == PlayerStatus.ACTIVE]
     all_in_players = [p for p in state.players if p.status == PlayerStatus.ALL_IN]
 
+    # If only one player remains (all others folded), hand is over
     if len(active_players) + len(all_in_players) < 2:
+        return True
+
+    # If only one active player and rest are all-in, go to showdown
+    if len(active_players) == 1 and len(all_in_players) > 0:
         return True
 
     # Round is over if:
@@ -199,7 +204,37 @@ def next_player_index(state: GameState) -> int:
 
 
 def _advance_phase(state: GameState) -> GameState:
-    # 1. Reset bets and acted status
+    """Advance to the next phase or resolve the hand."""
+    
+    # Check if only one player remains (all others folded)
+    active_players = [p for p in state.players if p.status == PlayerStatus.ACTIVE]
+    all_in_players = [p for p in state.players if p.status == PlayerStatus.ALL_IN]
+    
+    # If only one active player remains, they win immediately
+    if len(active_players) == 1 and len(all_in_players) == 0:
+        winner = active_players[0]
+        return _award_pot_to_winner(state, winner, "All others folded")
+    
+    # If only one active and some all-in, go to showdown
+    if len(active_players) <= 1 and len(all_in_players) > 0:
+        # Reset bets and go to showdown
+        reset_players = [
+            Player(
+                id=p.id,
+                name=p.name,
+                chips=p.chips,
+                status=p.status,
+                hole_cards=p.hole_cards,
+                current_bet=ChipCount(0),
+                is_human=p.is_human,
+                personality=p.personality,
+                acted_this_round=False,
+            )
+            for p in state.players
+        ]
+        return _resolve_showdown(state, reset_players)
+    
+    # 1. Reset bets and acted status for next betting round
     reset_players = [
         Player(
             id=p.id,
@@ -260,6 +295,53 @@ def _advance_phase(state: GameState) -> GameState:
         current_player_index=next_active,
         deck_seed=state.deck_seed,
         history=state.history + [f"--- {new_phase.name} ---"],
+    )
+
+
+def _award_pot_to_winner(state: GameState, winner: Player, reason: str) -> GameState:
+    """Award the entire pot to a single winner."""
+    final_players = []
+    for p in state.players:
+        if p.id == winner.id:
+            final_players.append(
+                Player(
+                    id=p.id,
+                    name=p.name,
+                    chips=ChipCount(p.chips + state.pot.amount),
+                    status=p.status,
+                    hole_cards=p.hole_cards,
+                    current_bet=ChipCount(0),
+                    is_human=p.is_human,
+                    personality=p.personality,
+                    acted_this_round=False,
+                )
+            )
+        else:
+            final_players.append(
+                Player(
+                    id=p.id,
+                    name=p.name,
+                    chips=p.chips,
+                    status=p.status,
+                    hole_cards=p.hole_cards,
+                    current_bet=ChipCount(0),
+                    is_human=p.is_human,
+                    personality=p.personality,
+                    acted_this_round=False,
+                )
+            )
+
+    return GameState(
+        id=state.id,
+        phase=HandPhase.SHOWDOWN,
+        community_cards=state.community_cards,
+        pot=Pot(ChipCount(0), []),
+        current_bet=ChipCount(0),
+        players=final_players,
+        dealer_index=state.dealer_index,
+        current_player_index=-1,
+        deck_seed=state.deck_seed,
+        history=state.history + [f"Winner: {winner.name} ({reason}) - Won ${state.pot.amount}"],
     )
 
 

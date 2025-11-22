@@ -72,27 +72,25 @@ sequenceDiagram
 
 -   **Python 3.13**: Because we like our types strong and our GILs... well, still there (mostly). 💪
 -   **Functional Programming**: Immutable state, pure functions. No side effects allowed! (Except emotional ones).
--   **Streamlit + React**: Python in the back, React in the front. It's the mullet of web dev. 💇‍♂️
--   **Tailwind CSS**: Because writing real CSS is so 2010.
--   **BDD Testing**: We have a "Tester Agent" that plays the game to make sure it works. It's inception! 🤯
+-   **FastAPI + HTMX**: Blazing fast backend with reactive frontend. No full page reloads! ⚡
+-   **WebSockets**: Real-time game updates pushed to your browser. 🚀
+-   **Modern CSS**: Dark theme poker table that looks premium. 🎨
 
 ## 🏃‍♂️ How to Run This Bad Boy
 
 1.  **Install the things**:
     ```bash
     pip install -r requirements.txt
-    cd ui/poker_component && npm install
     ```
 
-2.  **Build the shiny UI**:
+2.  **Start the party**:
     ```bash
-    cd ui/poker_component
-    npm run build
+    uvicorn ui.fastapi_app:app --reload --port 8000
     ```
 
-3.  **Start the party**:
-    ```bash
-    streamlit run ui/app.py
+3.  **Open your browser**:
+    ```
+    http://localhost:8000
     ```
 
 4.  **Sit back and watch the chaos.** 🍿

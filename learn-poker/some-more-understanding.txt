@@ -1,0 +1,251 @@
+Texas Hold'em Poker Rules - Complete Reference
+Overview
+Texas Hold'em is a poker variant where players create the best 5-card hand using 2 private "hole" cards and 5 shared "community" cards through strategic betting across 4 rounds.
+
+Game Setup
+Dealer Button
+Purpose: Marker indicating the nominal dealer position
+Rotation: Moves clockwise to next player after each hand
+Strategic Advantage: Player with button acts last in all post-flop betting rounds
+Blinds (Forced Bets)
+Small Blind: Player immediately left of dealer button
+Amount: Typically half the big blind
+Example: $5 in a $5/$10 game
+Big Blind: Player immediately left of small blind
+Amount: Minimum bet for the table
+Example: $10 in a $5/$10 game
+Live Bets: Blinds count toward future calls/raises in first betting round
+Betting Rounds
+1. Pre-Flop
+Dealing: Each player gets 2 private hole cards face down
+First to Act: Player left of big blind ("under the gun")
+Actions: Fold, call big blind, or raise
+Order: Clockwise until all active players contribute equal amount
+2. Flop
+Dealing: 3 community cards dealt face up
+First to Act: First active player left of dealer button
+Actions: Check (if no bet), bet, call, raise, or fold
+3. Turn (Fourth Street)
+Dealing: 1 community card dealt face up (4 total)
+First to Act: First active player left of dealer button
+Actions: Same as flop
+4. River (Fifth Street)
+Dealing: 1 community card dealt face up (5 total)
+First to Act: First active player left of dealer button
+Actions: Same as flop/turn
+Hand Rankings (Highest to Lowest)
+Royal Flush: A-K-Q-J-10, all same suit (unbeatable)
+Straight Flush: 5 cards same suit in sequence
+Four of a Kind: 4 cards of same rank
+Full House: 3 of one rank + 2 of another
+Flush: 5 cards same suit (not sequential)
+Straight: 5 cards in sequence (mixed suits)
+Ace can be high (A-K-Q-J-10) or low (A-2-3-4-5)
+Three of a Kind: 3 cards of same rank
+Two Pair: 2 cards of one rank + 2 of another
+One Pair: 2 cards of same rank
+High Card: Highest single card when no combinations
+Tiebreakers:
+
+If hands are identical, pot is split equally
+All suits are equal in ranking
+Kickers (highest unmatched cards) break ties
+Showdown Rules
+When Showdown Occurs
+2+ players remain after final betting round
+Players reveal cards to determine best hand
+Order of Showing
+Last aggressor: Player who bet/raised last shows first
+If no betting: Player left of dealer button shows first, then clockwise
+Mucking: Players can fold without showing if beaten
+Winning
+Best 5-card hand wins using any combination of:
+Both hole cards
+One hole card + 4 community cards
+No hole cards (playing the board)
+Special Situations
+All Players Fold Except One
+Result: Remaining player wins entire pot immediately
+No showdown: Winner doesn't need to show cards
+Chips: Winner's stack increases by pot amount
+All-In Situations
+All-In: Player bets all remaining chips
+Status: Player becomes "all-in" and can't bet further
+Showdown: All-in players still compete for pot
+Side Pots
+When Created: When player(s) go all-in but others continue betting
+Main Pot: All chips up to all-in player's contribution
+All-in player only eligible for main pot
+Side Pot(s): Additional bets by players with remaining chips
+Only players who contributed can win side pot
+Multiple Side Pots: Created when multiple players all-in at different amounts
+Award Order: Main pot first, then side pots
+Table Positions (9-Handed)
+Understanding position is crucial in poker. Your strategy should change based on where you sit relative to the dealer button.
+
+Position Names (Clockwise from Dealer)
+Dealer/Button (BTN): Acts last post-flop (most powerful position)
+Small Blind (SB): Left of button, posts small blind
+Big Blind (BB): Left of SB, posts big blind
+Under The Gun (UTG): Left of BB, first to act pre-flop
+Early Position (EP): Next 2 seats after UTG
+Middle Position (MP): Next 2 seats after EP
+Cutoff (CO): Right of button (second-best position)
+Strategic Position Play
+General Rule: The more players left to act after you, the tighter you should play.
+
+UTG (Under The Gun)
+Strategy: Very tight range
+Why: Many players left to act who could raise
+Hands: Premium hands only (AA, KK, QQ, AK)
+Early Position
+Strategy: Still tight, slightly wider than UTG
+Adjustment: Tighten if players behind are aggressive
+Middle Position
+Strategy: More freedom, ~50% of table folded
+Hands: Add small pairs and suited connectors
+Cutoff
+Strategy: Powerful position, wide opening range
+Why: Only button and blinds left to act
+Advantage: Will have position on blinds if called
+Button (Dealer)
+Strategy: Widest opening range
+Why: Acts last on all post-flop streets
+Profit: Most winnings come from button play
+Advantage: Maximum information before acting
+Blinds (SB/BB)
+Reality: Will lose money from blinds (even pros)
+Why: Worst position (act first post-flop)
+Strategy: Play premium hands and set-mining hands only
+Disadvantage: Positional disadvantage too great to overcome
+Poker Terminology
+Essential Terms
+Action: Any check, call, fold, or raise. Also describes games with lots of betting.
+
+Ante: Forced bet made pre-flop in addition to blinds. Can be paid by everyone or just UTG+1/button (straddle).
+
+All-In: Committing all remaining chips to the pot.
+
+Check: Declining to bet while staying in the hand (only when no bet has been made).
+
+Community Cards: The 5 shared cards (flop, turn, river) used with hole cards to make best hand.
+
+Draw: An unmade hand that could improve (e.g., 4 cards to a flush).
+
+Fold: Discarding your hand and forfeiting the pot.
+
+Gutshot: Inside straight draw (e.g., 8-7 on K-5-4 needs a 6).
+
+Heads-Up: A pot contested by only 2 players.
+
+Hole Cards: Your 2 private cards dealt face-down.
+
+Kicker: Highest unpaired side card used to break ties.
+
+Example: A♠Q♥ vs A♦J♣ on A♥-9♦-4♣-2♥-8♣
+Both have pair of aces, but Q-kicker wins
+Muck: Pile of discarded cards. To muck = discard without showing.
+
+Nuts: The strongest possible hand that cannot be beaten.
+
+Can be royal flush, ace-high straight/flush, or even top set
+Overcard: Card higher than any community card.
+
+Example: K♣Q♣ on 5♦6♠8♣ = two overcards
+Tilt: Emotional state causing suboptimal play.
+
+Three-Bet: Re-raising a raise (first raise = bet, second raise = three-bet).
+
+Straddle: Optional blind (usually 2x big blind) posted by UTG+1 or button.
+
+Betting Round Details
+Pre-Flop Sequence
+Small blind and big blind post forced bets
+Dealer deals 2 hole cards to each player (starting with SB, clockwise)
+UTG (left of BB) acts first
+Options: Fold, Call (limp), or Raise
+Action continues clockwise until all players have acted
+If 2+ players remain, proceed to flop
+Flop Sequence
+Dealer reveals 3 community cards
+First player left of button acts first
+Options: Check (if no bet), Bet, Call, Raise, or Fold
+If only 1 player remains, hand ends (winner takes pot)
+If 2+ players remain, proceed to turn
+Turn Sequence
+Dealer reveals 4th community card
+Same action order as flop (left of button first)
+Same options and end conditions
+River Sequence
+Dealer reveals 5th and final community card
+Same action order as flop/turn
+Final betting round
+If only 1 player remains, hand ends
+If 2+ players remain, proceed to showdown
+Implementation Checklist
+✅ Currently Implemented
+ Dealer button concept (dealer_index)
+ Blind positions (small blind = dealer+1, big blind = dealer+2)
+ 4 betting rounds (PREFLOP, FLOP, TURN, RIVER)
+ Community cards dealing (3 for flop, 1 for turn, 1 for river)
+ Hand rankings via hand_evaluator
+ Showdown logic with hand comparison
+ All players fold scenario (just fixed!)
+ Chip management (bets deducted, pot accumulated, winner awarded)
+ Player statuses (ACTIVE, FOLDED, ALL_IN)
+⚠️ Needs Verification/Improvement
+ Blind posting: Are blinds actually posted at start of hand?
+ First to act pre-flop: Should be UTG (left of big blind)
+ First to act post-flop: Should be first active player left of button
+ Dealer button rotation: Does button move after each hand?
+ Blind amounts: Are small/big blind amounts configurable and correct?
+ Minimum raise: Is minimum raise enforced (at least 2x current bet)?
+ All-in handling: Are all-in players properly excluded from further betting?
+ Kicker comparison: Detailed tiebreaker logic for identical hands
+❌ Not Implemented (Advanced Features)
+ Side pots: Multiple pots when players all-in at different amounts
+ Pot splitting: Equal division when hands tie
+ Antes: Optional forced bets in addition to blinds
+ Straddles: Optional blind posted by non-blind positions
+ Position tracking: UTG, EP, MP, CO labels for strategic play
+ Betting limits: No-limit, pot-limit, fixed-limit structures
+ Minimum bet enforcement: Ensuring bets meet table minimums
+ String betting prevention: Raise must be declared/done in one motion
+ Muck option: Allow players to fold without showing at showdown
+Critical Rules for Correct Implementation
+1. Betting Round Completion
+A betting round ends when:
+
+All active players have acted
+All active players have matched the current bet
+Only one player remains (others folded)
+2. Hand Termination
+A hand ends when:
+
+Only one player remains (all others folded) → Winner gets pot immediately
+Final betting round complete → Showdown determines winner
+All players all-in → Deal remaining cards, then showdown
+3. Chip Flow
+Bets: Deducted from player chips immediately
+Pot: Accumulates all bets
+Winner: Pot added to winner's chips
+Losers: Already lost their bets (no further deduction)
+4. Player Status Transitions
+ACTIVE → FOLDED (when player folds)
+ACTIVE → ALL_IN (when player bets all chips)
+ALL_IN → stays ALL_IN until showdown
+FOLDED → stays FOLDED until new hand
+5. Action Order
+Pre-flop: Starts with UTG (left of big blind), goes clockwise
+Post-flop: Starts with first active player left of button, goes clockwise
+Button advantage: Acts last on all post-flop streets
+Next Steps for Implementation
+Verify blind posting in game initialization
+Fix action order for pre-flop (UTG first) and post-flop (left of button first)
+Test dealer button rotation between hands
+Implement side pots for all-in scenarios
+Add pot splitting for tied hands with kicker comparison
+Improve showdown card reveal order
+Add betting validation (minimums, raises, etc.)
+Track positions (UTG, EP, MP, CO) for strategic analysis
+Add antes/straddles as optional features

@@ -101,3 +101,9 @@ game_logs.jsonl
 # Project-specific
 *.pyc
 .cache/
+
+# Training artifacts
+training/checkpoints/
+training/logs/
+training/data/
+training/fast_config.yaml

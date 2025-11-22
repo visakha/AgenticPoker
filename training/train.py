@@ -10,7 +10,9 @@ import argparse
 from pathlib import Path
 import torch
 import signal
+import signal
 import sys
+from functools import partial
 
 from training.training_config import FullConfig, get_default_config
 from training.model import PokerTransformer, PokerTokenizer
@@ -74,6 +76,7 @@ class TrainingOrchestrator:
             starting_chips=config.simulation.starting_chips,
             small_blind=config.simulation.small_blind,
             big_blind=config.simulation.big_blind,
+            max_hands=config.simulation.max_hands,
             use_multiprocessing=config.simulation.use_multiprocessing,
             num_workers=config.simulation.num_workers
         )
@@ -91,18 +94,6 @@ class TrainingOrchestrator:
         print("\n\nReceived interrupt signal. Saving checkpoint and exiting...")
         self.should_stop = True
     
-    def create_agent_factory(self):
-        """Create factory function for agents."""
-        def factory(player_id: PlayerID) -> LLMAgent:
-            return LLMAgent(
-                player_id=player_id,
-                model=self.model,
-                tokenizer=self.tokenizer,
-                device=self.device,
-                temperature=1.0,
-                deterministic=False
-            )
-        return factory
     
     def train(self):
         """Run the main training loop."""
@@ -125,16 +116,24 @@ class TrainingOrchestrator:
             # Set model to eval mode for data collection
             self.model.eval()
             
+            # Create agent factory with bound args
+            agent_factory = partial(
+                create_agent_fn,
+                model=self.model,
+                tokenizer=self.tokenizer,
+                device=self.device
+            )
+            
             # Simulate games
             results, stats = self.simulator.simulate_games(
                 num_games=self.config.training.games_per_update,
-                agent_factory=self.create_agent_factory(),
+                agent_factory=agent_factory,
                 show_progress=True
             )
             
             games_played += len(results)
             
-            # Log episode metrics
+            # Log episode metrics and add to replay buffer
             for result in results:
                 self.logger.log_episode(
                     episode_num=self.trainer.total_episodes,
@@ -142,6 +141,11 @@ class TrainingOrchestrator:
                     length=result.num_hands
                 )
                 self.trainer.total_episodes += 1
+                
+                # Add episodes to replay buffer
+                if result.episodes:
+                    for episode in result.episodes:
+                        self.replay_buffer.add_episode(episode)
             
             print(f"Games played: {games_played}/{self.config.training.num_games}")
             print(f"Avg hands/game: {stats.avg_hands_per_game:.1f}")
@@ -212,10 +216,18 @@ class TrainingOrchestrator:
         """Run evaluation."""
         self.model.eval()
         
+        # Create agent factory with bound args
+        agent_factory = partial(
+            create_agent_fn,
+            model=self.model,
+            tokenizer=self.tokenizer,
+            device=self.device
+        )
+        
         # Run evaluation games
         results, stats = self.simulator.simulate_games(
             num_games=self.config.training.eval_games,
-            agent_factory=self.create_agent_factory(),
+            agent_factory=agent_factory,
             show_progress=False
         )
         
@@ -252,6 +264,23 @@ class TrainingOrchestrator:
         for checkpoint in checkpoints[self.config.training.keep_checkpoints:]:
             checkpoint.unlink()
             print(f"Removed old checkpoint: {checkpoint.name}")
+
+
+def create_agent_fn(
+    player_id: PlayerID,
+    model: PokerTransformer,
+    tokenizer: PokerTokenizer,
+    device: str
+) -> LLMAgent:
+    """Standalone agent factory function."""
+    return LLMAgent(
+        player_id=player_id,
+        model=model,
+        tokenizer=tokenizer,
+        device=device,
+        temperature=1.0,
+        deterministic=False
+    )
 
 
 def main():
