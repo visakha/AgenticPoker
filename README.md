@@ -1,3 +1,7 @@
+# Code written by AI Code Assistants
+100% code written by AI Agents, no gurantee of any sorts.
+Do not attempt to learn poker from this project, learn how to build AI Agents and related tech.
+
 # 🃏 Agentic Poker: The "I Can't Believe It's Not Gambling" Edition 🎲
 
 Welcome to **Agentic Poker**, the only poker app where the players are 100% artificial but the emotional damage is 100% real! 🤖💔
